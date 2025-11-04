@@ -1,0 +1,20 @@
+{
+    "name": "vetclinic-pro",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "dev:frontend": "cd packages/frontend && npm run dev",
+        "dev:backend": "cd packages/backend && npm run dev",
+        "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+        "build": "npm run build --workspace=packages/frontend && npm run build --workspace=packages/backend",
+        "test": "npm run test --workspaces",
+        "lint": "npm run lint --workspaces"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2",
+        "cross-env": "^7.0.3"
+    }
+}
