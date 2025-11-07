@@ -4,7 +4,7 @@ import AnimalList from '@/components/AnimalList.vue';
 
 <template>
   <div class="home">
-    <h1>VetClinic Pro</h1>
+    <h1>My Clinic</h1>
     <AnimalList />
   </div>
 </template>

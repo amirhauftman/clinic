@@ -16,7 +16,7 @@ const handleExport = async () => {
   loading.value = true;
   try {
     const response = await animalApi.exportExcel(props.animalId);
-    const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;

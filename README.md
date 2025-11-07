@@ -10,7 +10,66 @@
 
 
 ## 🚀 Quickstart
-See [SETUP.md](SETUP.md).
+
+### Prerequisites
+- Node.js (v16 or higher)
+- Docker and Docker Compose
+- npm or yarn
+- PostgreSQL (if not using Docker)
+
+### Installation & Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/amirhauftman/clinic.git
+cd clinic
+```
+
+2. Start the PostgreSQL database:
+```bash
+docker-compose up -d
+```
+
+3. Install dependencies:
+```bash
+# Install root dependencies
+npm install
+
+# Install backend dependencies
+cd packages/backend
+npm install
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
+
+4. Set up the backend:
+```bash
+cd packages/backend
+# Copy the example env file and update with your settings
+cp .env.example .env
+# Run database migrations
+npx prisma migrate dev
+```
+
+5. Start the development servers:
+
+Backend:
+```bash
+cd packages/backend
+npm run start:dev
+```
+
+Frontend:
+```bash
+cd packages/frontend
+npm run dev
+```
+
+The application will be available at:
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:3000
 
 ## 📚 Docs
 - [PRD.md](PRD.md) - Requirements

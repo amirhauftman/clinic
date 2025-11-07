@@ -25,7 +25,6 @@ app.use(errorHandler);
 // Start server
 app.listen(port, () => {
     console.log(chalk.green(`🚀 Server running at http://localhost:${port}`));
-    console.log(chalk.blue('📚 API Documentation available at:'), chalk.cyan(`http://localhost:${port}/api`));
 });
 
 // Graceful shutdown
