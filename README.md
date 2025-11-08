@@ -48,7 +48,10 @@ npm install
 ```bash
 cd packages/backend
 # Copy the example env file and update with your settings
+# macOS / Linux
 cp .env.example .env
+# Windows PowerShell
+Copy-Item .env.example .env -Force
 # Run database migrations
 npx prisma migrate dev
 ```
@@ -58,7 +61,7 @@ npx prisma migrate dev
 Backend:
 ```bash
 cd packages/backend
-npm run start:dev
+npm run dev
 ```
 
 Frontend:
@@ -72,15 +75,13 @@ The application will be available at:
 - Backend API: http://localhost:3000
 
 ## 📚 Docs
-- [PRD.md](PRD.md) - Requirements
-- [AGENT.md](AGENT.md) - Copilot Guide
-- [ARCHITECTURE.md](ARCHITECTURE.md) - Design
+- [PRD.md](PRD.md) - Requirements (User stories & acceptance criteria)
+- [AGENT.md](AGENT.md) - Copilot Guide (Copilot prompt cheat-sheet)
+- [ARCHITECTURE.md](ARCHITECTURE.md) - Design (Mermaid diagram + tech rationale)
 - [API.md](API.md) - Endpoints
 
 ## 🛠️ Tech Stack
 - Frontend: Vue 3 + Pinia + Axios
 - Backend: Express + Prisma + exceljs + Zod
 - DB: PostgreSQL (Docker)
-- Tools: npm, ESLint, Husky, Vitest/Jest
-
-**Submission Note**: Fully compliant with test specs. Excel reports styled for professionalism.
+- Tools: npm, ESLint, Vitest/Jest

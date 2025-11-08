@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { prisma } from '../server';
 import { AnimalSchema, EventSchema } from '../schemas';
+import type { Animal as PrismaAnimal, Event as PrismaEvent } from '@prisma/client';
 import { differenceInYears } from 'date-fns';
 import ExcelJS from 'exceljs';
 import { NotFoundError } from '../middleware/errorHandler';
@@ -15,7 +16,7 @@ router.get('/', async (req, res, next) => {
             orderBy: { name: 'asc' },
         });
 
-        const animalsWithAge = animals.map(animal => ({
+        const animalsWithAge = animals.map((animal: PrismaAnimal) => ({
             ...animal,
             age: differenceInYears(new Date(), animal.birthDate),
         }));
@@ -131,7 +132,7 @@ router.get('/:id/export', async (req, res, next) => {
         worksheet.getCell('B6').value = `${differenceInYears(new Date(), animal.birthDate)} years`;
 
         // Style info section
-        ['A3', 'A4', 'A5', 'A6'].forEach(cell => {
+        ['A3', 'A4', 'A5', 'A6'].forEach((cell: string) => {
             worksheet.getCell(cell).font = { bold: true };
         });
 
@@ -146,7 +147,7 @@ router.get('/:id/export', async (req, res, next) => {
         };
 
         // Add events data
-        animal.events.forEach((event, index) => {
+        animal.events.forEach((event: PrismaEvent, index: number) => {
             const row = worksheet.getRow(index + 9);
             row.values = [
                 event.eventDate.toLocaleDateString(),
